@@ -1,0 +1,160 @@
+<!DOCTYPE HTML>
+    <html lang="en">
+    <head>
+        <title>AMA Handle | Error</title>
+        <meta charset="UTF-8">
+        <!-- Code Mirror -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.59.4/codemirror.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.59.4/codemirror.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.59.4/addon/edit/matchbrackets.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.59.4/mode/htmlmixed/htmlmixed.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.59.4/mode/xml/xml.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.59.4/mode/javascript/javascript.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.59.4/mode/css/css.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.59.4/mode/clike/clike.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.59.4/mode/php/php.min.js"></script>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+        <style>
+            *,
+            *::before,
+            *::after {
+                box-sizing: border-box;
+            }
+
+            @media (prefers-reduced-motion: no-preference) {
+                :root {
+                    scroll-behavior: smooth;
+                }
+            }
+            body {
+                margin: 70px;
+                overflow-x: hidden;
+                text-align: center;
+                background: white;
+                font-family: "Roboto", sans-serif;
+                letter-spacing: 1px;
+            }
+            .ama-block {
+                background: white;
+                box-shadow: 0 0 60px 5px rgba(53,116,255,0.18);
+                border-radius: 5px;
+                text-align: justify;
+                direction: ltr;
+                width: 530px;
+                margin-left: auto;
+                margin-right: auto;
+                padding: 20px;
+                border: 1px rgba(0, 0, 0, 0.03) solid;
+                max-width: 100%;
+                line-height: 30px;
+            }
+            .ama-block b {
+                font-weight: 600;
+            }
+            textarea#code {
+                width: 100%;
+                padding: 5px;
+                border: 1px #ccc solid;
+                font-size: 18px;
+                height: 100px;
+                border-radius: 15px;
+            }
+            .list {
+                width: 100%;
+                padding: 2px;
+                text-align: left;
+                border-radius: 30px;
+                margin-bottom: 10px;
+                border: 1px #ccc solid;
+                display: flex;
+                transition: 0.25s all;
+            }
+            .list .msg {
+                width: 80%;
+                padding: 7px;
+                text-align: left;
+                font-weight: 300;
+                display: inline-block;
+            }
+            .list .opt {
+                width: 20%;
+                padding: 7px;
+                text-align: left;
+                font-weight: 500;
+                display: inline-block;
+                margin-right: 10px;
+            }
+            .co-red {
+                background: rgba(255,4,4,0.1);
+                border-bottom: 1px red solid;
+                border-top: 1px red solid;
+            }
+            .list:hover {
+                background: rgba(255,4,4,0.29);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="ama-block">
+            <center style="font-weight: 900">An error has occurred</center>
+            <p>There is an error in the system. Please check the log files and fix the error. The reason for the error can be anything!</p>
+            <p style="font-size: 14px"><b>Note: </b>This page is displayed to prevent bugs. You can change the display of this page and even the way it is displayed and even disable it. Follow Handler topics to see the type of error!</p>
+            <center style="font-weight: 900">Explain error for developer</center>
+            <small>You can disable error information form 'config/main.php' and 'dev' setting!</small>
+            <p style="font-size: 14px">
+            <div class="list">
+                <div class="opt">Date</div>
+                <div class="msg">{date}</div>
+            </div>
+            <div class="list">
+                <div class="opt">Message</div>
+                <div class="msg">{msg}</div>
+            </div>
+            <div class="list">
+                <div class="opt">File</div>
+                <div class="msg">{file}</div>
+            </div>
+            <div class="list">
+                <div class="opt">Line</div>
+                <div class="msg">{line} <a style="font-size: 12px" href="javascript:goToErrorLine()">(Go to line)</a></div>
+            </div>
+            <div class="list">
+                <div class="opt">Code</div>
+                <div class="msg">{code}</div>
+            </div>
+            <div class="list">
+                <div class="opt">Level</div>
+                <div class="msg">{level}</div>
+            </div>
+            <br>
+            <center style="font-weight: 900">Error source</center>
+            <small>The line that contains error is marked with red background! This part is only can show source to you and it's not for edit!</small>
+            <textarea id="code" readOnly="nocursor">{text}</textarea>
+            <div id="amaOpt"></div>
+            </p>
+            <center style="font-size: 12px;opacity: 0.6">AMA Handle</center>
+        </div>
+
+        <script>
+            var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+                lineNumbers: true,
+                matchBrackets: true,
+                mode: "application/x-httpd-php",
+                indentUnit: 4,
+                indentWithTabs: true,
+                readOnly: "nocursor",
+                gutter: true,
+                // firstLineNumber: 0
+            });
+            editor.setSize('100%', '300px');
+            editor.addLineClass({line}-1, '', 'co-red');
+            function goToErrorLine() {
+                document.getElementById('amaOpt').scrollIntoView({ behavior: 'smooth', block: 'end'});
+                var t = editor.charCoords({line: {line}-1, ch: 0}, "local").top;
+                var middleHeight = editor.getScrollerElement().offsetHeight / 2;
+                editor.scrollTo(null, t - middleHeight - 5);
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,32 @@
+{
+  "name": "irmmr/handle",
+  "description": "A basic library for make coding easy from AMA",
+  "minimum-stability": "dev",
+  "license": "MIT",
+  "keywords": [
+    "handler",
+    "base"
+  ],
+  "authors": [
+    {
+      "name": "irmmr",
+      "email": "irmmr.ir@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.4",
+    "PHPMailer/PHPMailer": "^6.3",
+    "ext-pdo": "*",
+    "ext-http": "*",
+    "ext-json": "*"
+  },
+  "autoload": {
+    "files" : [
+      "/config.php"
+    ],
+    "psr-4": {
+      "Irmmr\\Handle\\": "src/",
+      "Irmmr\\Handle\\App\\": "app/"
+    }
+  }
+}
