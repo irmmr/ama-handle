@@ -2,11 +2,16 @@
   "name": "irmmr/handle",
   "description": "A basic library for make coding easy from AMA",
   "minimum-stability": "dev",
+  "prefer-stable": true,
   "license": "MIT",
   "keywords": [
     "handler",
     "base"
   ],
+  "config": {
+    "optimize-autoloader": true,
+    "sort-packages": true
+  },
   "authors": [
     {
       "name": "irmmr",
