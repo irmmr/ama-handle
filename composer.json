@@ -15,10 +15,7 @@
   ],
   "require": {
     "php": ">=7.4",
-    "phpmailer/phpmailer": "^6.3",
-    "ext-pdo": "*",
-    "ext-http": "*",
-    "ext-json": "*"
+    "phpmailer/phpmailer": "^6.3"
   },
   "autoload": {
     "files" : [
