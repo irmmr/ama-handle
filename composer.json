@@ -1,6 +1,6 @@
 {
   "name": "irmmr/handle",
-  "type": "project",
+  "type": "library",
   "description": "A basic library for make coding easy from AMA",
   "minimum-stability": "dev",
   "prefer-stable": true,
