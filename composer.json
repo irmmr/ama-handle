@@ -2,7 +2,7 @@
   "name": "irmmr/handle",
   "type": "project",
   "description": "A basic library for make coding easy from AMA",
-  "minimum-stability": "stable",
+  "minimum-stability": "dev",
   "prefer-stable": true,
   "license": "MIT",
   "keywords": [
