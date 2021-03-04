@@ -1,7 +1,7 @@
 <?php
 /**
  * The exception class
- * The main error handle for ama handle.
+ * The database error handle for ama handle.
  * @author irmmr <irmmr.ir@gmail.com>
  * @version 1.0
  */
@@ -10,13 +10,13 @@ namespace Irmmr\Handle\Exception;
 use Throwable;
 
 /**
- * Class AMAException
+ * Class Database
  * @package Irmmr\Handle\Exception
  */
-class AMADbException extends AMAException
+class Database extends Main
 {
     /**
-     * AMAException constructor.
+     * Main constructor.
      * @param string $message
      * @param int $code
      * @param Throwable|null $previous

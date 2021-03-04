@@ -3,12 +3,12 @@
  * The error class.
  * The error handle for ama.
  * @author irmmr <irmmr.ir@gmail.com>
- * @version 1.0
+ * @version 1.1
  */
 namespace Irmmr\Handle;
 
-use Irmmr\Handle\Exception\AMADbException;
-use Irmmr\Handle\Exception\AMAException;
+use Irmmr\Handle\Exception\Database;
+use Irmmr\Handle\Exception\Main;
 
 /**
  * Class Err
@@ -25,50 +25,60 @@ class Err
     /**
      * Create an ama error exception from main exception.
      * @param \Exception $error
-     * @return AMAException
+     * @return Main
      */
-    public static function exp(\Exception $error): AMAException {
-        $ama = new AMAException($error->getMessage(), $error->getCode(), $error->getPrevious());
+    public static function exp(\Exception $error): Main {
+        $ama = new Main($error->getMessage(), $error->getCode(), $error->getPrevious());
         return $ama->loadException($error);
     }
 
     /**
      * Create a ama handler error.
      * @param \Error $error
-     * @return AMAException
+     * @return Main
      */
-    public static function error(\Error $error): AMAException {
-        $ama = new AMAException($error->getMessage(), $error->getCode(), $error->getPrevious());
+    public static function error(\Error $error): Main {
+        $ama = new Main($error->getMessage(), $error->getCode(), $error->getPrevious());
         return $ama->loadError($error);
+    }
+
+    /**
+     * Create a ama handler custom.
+     * @param $error
+     * @return Main
+     */
+    public static function custom($error): Main {
+        $ama = new Main($error->getMessage(), $error->getCode(), $error->getPrevious());
+        return $ama->load($error);
     }
 
     /**
      * Create an ama database error exception from main exception.
      * @param \Exception $error
-     * @return AMADbException
+     * @return Database
      */
-    public static function expDb(\Exception $error): AMADbException {
-        $ama = new AMADbException($error->getMessage(), $error->getCode(), $error->getPrevious());
+    public static function expDb(\Exception $error): Database {
+        $ama = new Database($error->getMessage(), $error->getCode(), $error->getPrevious());
         return $ama->loadException($error);
     }
 
     /**
      * Create an ama database error exception from pdo exception.
      * @param \PDOException $error
-     * @return AMADbException
+     * @return Database
      */
-    public static function expDbPdo(\PDOException $error): AMADbException {
-        return new AMADbException($error->getMessage(), $error->getCode(), $error->getPrevious());
+    public static function expDbPdo(\PDOException $error): Database {
+        return new Database($error->getMessage(), $error->getCode(), $error->getPrevious());
     }
 
     /**
      * Add logger for an exception error.
-     * @param \Exception $error
+     * @param $error
      * @param string $name
      * @param string $own
      * @param int $level
      */
-    public static function expLog(\Exception $error, string $name, string $own = 'Unknown', int $level = 0): void {
+    public static function expLog($error, string $name, string $own = 'Unknown', int $level = 0): void {
         $date = date('[Y-m-d H:i:s]');
         $logg = $date . " [C:{$error->getCode()}] [L:{$level}] ({$own}) ({$error->getFile()}#{$error->getLine()}) " . $error->getMessage();
         $logg = trim(str_replace(PHP_EOL, '', $logg));

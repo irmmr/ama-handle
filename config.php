@@ -4,7 +4,7 @@
  * This file using for set main variables and some configs
  * for user and is a important file for ama handle.
  * @author irmmr <irmmr.ir@gmail.com>
- * @version 1.0
+ * @version 1.1
  */
 
 /*
@@ -21,6 +21,7 @@
  * in other classes.
  */
 define('AMA_HANDLE_PATH', __DIR__);
+define('AMA_HANDLE_VERSION', '1.0.1');
 define('AMA_HANDLE_PHP', '7.4');
 
 /**

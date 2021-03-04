@@ -8,7 +8,6 @@
 namespace Irmmr\Handle\Mailer;
 
 use Irmmr\Handle\Err;
-use http\Encoding\Stream\Debrotli;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP as Smt;
 use PHPMailer\PHPMailer\Exception;

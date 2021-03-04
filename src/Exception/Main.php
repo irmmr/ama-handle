@@ -3,21 +3,20 @@
  * The exception class
  * The main error handle for ama handle.
  * @author irmmr <irmmr.ir@gmail.com>
- * @version 1.0
+ * @version 1.1
  */
 namespace Irmmr\Handle\Exception;
 
-use Carbon\Exceptions\Exception;
 use Throwable;
 
 /**
- * Class AMAException
+ * Class Main
  * @package Irmmr\Handle\Exception
  */
-class AMAException extends \Exception
+class Main extends \Exception
 {
     /**
-     * AMAException constructor.
+     * Main constructor.
      * @param string $message
      * @param int $code
      * @param Throwable|null $previous
@@ -31,7 +30,20 @@ class AMAException extends \Exception
      * @param \Error $handler
      * @return $this
      */
-    public function loadError(\Error $handler): AMAException {
+    public function loadError(\Error $handler): Main {
+        $this->file = $handler->getFile();
+        $this->line = $handler->getLine();
+        $this->code = $handler->getCode();
+        $this->message = $handler->getMessage();
+        return $this;
+    }
+
+    /**
+     * Load for new exception.
+     * @param $handler
+     * @return $this
+     */
+    public function load($handler): Main {
         $this->file = $handler->getFile();
         $this->line = $handler->getLine();
         $this->code = $handler->getCode();
@@ -44,7 +56,7 @@ class AMAException extends \Exception
      * @param \Exception $handler
      * @return $this
      */
-    public function loadException(\Exception $handler): AMAException {
+    public function loadException(\Exception $handler): Main {
         $this->file = $handler->getFile();
         $this->line = $handler->getLine();
         $this->code = $handler->getCode();
