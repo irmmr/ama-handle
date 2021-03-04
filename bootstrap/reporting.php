@@ -5,7 +5,6 @@
  * @author irmmr <irmmr.ir@gmail.com>
  * @version 1.0
  */
-use Irmmr\Handle\Err;
 
 /**
  * ----------------------------------------
@@ -28,7 +27,7 @@ if (AMA_HANDLE_ERR['active']) {
             return;
         }
         if (AMA_HANDLE_ERR['logger']) {
-            Err::log($message, 'error', 0, 'Handler', $severity, $file, $line);
+            Irmmr\Handle\Err::log($message, 'error', 0, 'Handler', $severity, $file, $line);
         }
         if (AMA_HANDLE_ERR['stop']) {
             // Stop page
@@ -40,7 +39,7 @@ if (AMA_HANDLE_ERR['active']) {
 // Exception handler
 if (AMA_HANDLE_EXP['active']) {
     set_exception_handler(function ($exception) {
-        $err = Err::error($exception);
+        $err = Irmmr\Handle\Err::error($exception);
         if (AMA_HANDLE_EXP['logger']) {
             $err->addLog('ExpHandler');
         }
