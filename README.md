@@ -103,8 +103,4 @@ Db::getData('SELECT `id`, `name` FROM `my-table` WHERE `user`=:user', [
 ]);
 ```
 
-<<<<<<< HEAD
 And other items that will be added later.
-=======
-And other items that will be added later.
->>>>>>> c523b99652c22059c0da1bd75a69c3a3d09e7fbe
