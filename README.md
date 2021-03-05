@@ -69,12 +69,30 @@ Mailer::smtp()->to('user@example.com', 'user')
     ->send();
 ```
 
-- Working with file
+- Working with method
 ```php
-use Irmmr\Handle\Filer;
+use Irmmr\Handle\Method;
 
-// get file size
-echo Filer::file()->size('path.txt');
+// get method type
+echo Method::type();
+
+// check method type
+if (Method::isType(Method::GET)) {
+    echo 'It\'s GET.';
+}
+
+// check and get a sample GET method
+if (Method::get()->has('page')) {
+    $page = Method::get()->get('page');
+} else {
+    $page = 1;
+}
+
+// or
+$page = Method::get()->get('page') ?? 1;
+
+// or with default value
+$page = Method::get()->get('page', 1);
 ```
 
 - Working with file
