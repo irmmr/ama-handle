@@ -7,14 +7,15 @@
  */
 namespace Irmmr\Handle;
 
-use Irmmr\Handle\Data\DataCheck;
-use Irmmr\Handle\Data\DataCleaner;
-use Irmmr\Handle\Data\DataCompare;
-use Irmmr\Handle\Data\DataConvert;
-use Irmmr\Handle\Data\DataJson;
-use Irmmr\Handle\Data\DataRand;
-use Irmmr\Handle\Data\DataRemove;
-use Irmmr\Handle\Data\DataSerialize;
+use Irmmr\Handle\Data\Check;
+use Irmmr\Handle\Data\Cleaner;
+use Irmmr\Handle\Data\Compare;
+use Irmmr\Handle\Data\Convert;
+use Irmmr\Handle\Data\Json;
+use Irmmr\Handle\Data\Rand;
+use Irmmr\Handle\Data\Remove;
+use Irmmr\Handle\Data\Serialize;
+use Irmmr\Handle\Data\Validate;
 
 /**
  * Class Data
@@ -24,65 +25,73 @@ class Data
 {
     /**
      * Clean data.
-     * @return DataCleaner
+     * @return Cleaner
      */
-    public static function clean(): DataCleaner {
-        return new DataCleaner();
+    public static function clean(): Cleaner {
+        return new Cleaner();
     }
 
     /**
      * Clean compare.
-     * @return DataCompare
+     * @return Compare
      */
-    public static function compare(): DataCompare {
-        return new DataCompare();
+    public static function compare(): Compare {
+        return new Compare();
     }
 
     /**
      * Clean check.
-     * @return DataCheck
+     * @return Check
      */
-    public static function check(): DataCheck {
-        return new DataCheck();
+    public static function check(): Check {
+        return new Check();
     }
 
     /**
      * Clean convert.
-     * @return DataConvert
+     * @return Convert
      */
-    public static function convert(): DataConvert {
-        return new DataConvert();
+    public static function convert(): Convert {
+        return new Convert();
     }
 
     /**
      * Random data.
-     * @return DataRand
+     * @return Rand
      */
-    public static function rand(): DataRand {
-        return new DataRand();
+    public static function rand(): Rand {
+        return new Rand();
     }
 
     /**
      * Serialize data.
-     * @return DataSerialize
+     * @return Serialize
      */
-    public static function serialize(): DataSerialize {
-        return new DataSerialize();
+    public static function serialize(): Serialize {
+        return new Serialize();
     }
 
     /**
      * Json data.
-     * @return DataJson
+     * @return Json
      */
-    public static function json(): DataJson {
-        return new DataJson();
+    public static function json(): Json {
+        return new Json();
     }
 
     /**
      * Remove data.
-     * @return DataRemove
+     * @return Remove
      */
-    public static function remove(): DataRemove {
-        return new DataRemove();
+    public static function remove(): Remove {
+        return new Remove();
+    }
+
+    /**
+     * Validate data.
+     * @return Validate
+     */
+    public static function validate(): Validate {
+        return new Validate();
     }
 }

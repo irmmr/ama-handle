@@ -10,10 +10,10 @@ namespace Irmmr\Handle\Filer;
 use Irmmr\Handle\Filer;
 
 /**
- * Class FilerFile
+ * Class File
  * @package Irmmr\Handle\Filer
  */
-class FilerFile extends Filer
+class File extends Filer
 {
     /**
      * Get file content on type string.

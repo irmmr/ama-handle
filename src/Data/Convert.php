@@ -8,10 +8,10 @@
 namespace Irmmr\Handle\Data;
 
 /**
- * Class DataConvert
+ * Class Convert
  * @package Irmmr\Handle\Data
  */
-class DataConvert
+class Convert
 {
     /**
      * Set uppercase data.

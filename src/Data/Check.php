@@ -8,10 +8,10 @@
 namespace Irmmr\Handle\Data;
 
 /**
- * Class DataCheck
+ * Class Check
  * @package Irmmr\Handle\Data
  */
-class DataCheck
+class Check
 {
     /**
      * Check data includes action.

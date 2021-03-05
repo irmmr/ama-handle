@@ -8,10 +8,10 @@
 namespace Irmmr\Handle\Data;
 
 /**
- * Class DataCompare
+ * Class Compare
  * @package Irmmr\Handle\Data
  */
-class DataCompare
+class Compare
 {
     /**
      * Compare data length using domain.

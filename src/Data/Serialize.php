@@ -8,10 +8,10 @@
 namespace Irmmr\Handle\Data;
 
 /**
- * Class DataSerialize
+ * Class Serialize
  * @package Irmmr\Handle\Data
  */
-class DataSerialize
+class Serialize
 {
     /**
      * Encode data.

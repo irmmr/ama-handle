@@ -8,10 +8,10 @@
 namespace Irmmr\Handle\Data;
 
 /**
- * Class DataRand
+ * Class Rand
  * @package Irmmr\Handle\Data
  */
-class DataRand
+class Rand
 {
     /**
      * Make random data based on string.

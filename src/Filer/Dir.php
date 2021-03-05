@@ -10,10 +10,10 @@ namespace Irmmr\Handle\Filer;
 use Irmmr\Handle\Filer;
 
 /**
- * Class FilerDir
+ * Class Dir
  * @package Irmmr\Handle\Filer
  */
-class FilerDir extends Filer
+class Dir extends Filer
 {
     /**
      * Get dir list or contents for filer.

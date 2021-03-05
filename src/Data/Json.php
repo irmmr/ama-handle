@@ -8,10 +8,10 @@
 namespace Irmmr\Handle\Data;
 
 /**
- * Class DataJson
+ * Class Json
  * @package Irmmr\Handle\Data
  */
-class DataJson
+class Json
 {
     /**
      * Encode data.

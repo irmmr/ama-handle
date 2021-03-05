@@ -7,8 +7,8 @@
  */
 namespace Irmmr\Handle;
 
-use Irmmr\Handle\Filer\FilerDir;
-use Irmmr\Handle\Filer\FilerFile;
+use Irmmr\Handle\Filer\Dir;
+use Irmmr\Handle\Filer\File;
 
 /**
  * Class Filer
@@ -81,17 +81,17 @@ class Filer
 
     /**
      * File file class.
-     * @return FilerFile
+     * @return File
      */
-    public static function file(): FilerFile {
-        return new FilerFile();
+    public static function file(): File {
+        return new File();
     }
 
     /**
      * File dir class.
-     * @return FilerDir
+     * @return Dir
      */
-    public static function dir(): FilerDir {
-        return new FilerDir();
+    public static function dir(): Dir {
+        return new Dir();
     }
 }

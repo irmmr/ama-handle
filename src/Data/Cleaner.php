@@ -8,10 +8,10 @@
 namespace Irmmr\Handle\Data;
 
 /**
- * Class DataCleaner
+ * Class Cleaner
  * @package Irmmr\Handle\Data
  */
-class DataCleaner
+class Cleaner
 {
     /**
      * Data cleaner modes.

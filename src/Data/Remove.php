@@ -8,10 +8,10 @@
 namespace Irmmr\Handle\Data;
 
 /**
- * Class DataRemove
+ * Class Remove
  * @package Irmmr\Handle\Data
  */
-class DataRemove
+class Remove
 {
     /**
      * Remove some data from string.
