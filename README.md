@@ -1,3 +1,13 @@
+<p align="center">
+    <a href="https://packagist.org/packages/irmmr/handle" target="_blank">
+        <img src="https://img.shields.io/packagist/v/irmmr/handle?style=for-the-badge" alt="packagist"/>
+    </a>
+    <a href="https://github.com/irmmr/ama-handle/blob/main/LICENSE" target="_blank">
+        <img src="https://img.shields.io/github/license/irmmr/ama-handle?style=for-the-badge" alt="license"/>
+    </a>
+    <img src="https://img.shields.io/packagist/php-v/irmmr/handle/V1.0.2?style=for-the-badge" alt="php version support"/>
+</p>
+
 # What is ama-handle?
 A library with which you can use a series of ready-made functions and classes to make your coding task easier. This handle uses different packages and classes.
 
