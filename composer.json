@@ -30,8 +30,8 @@
       "/config.php"
     ],
     "psr-4": {
-      "Irmmr\\Handle\\": "src/",
-      "Irmmr\\Handle\\App\\": "app/"
+      "Irmmr\\Handle\\App\\": "app/",
+      "Irmmr\\Handle\\": "src/"
     }
   }
 }
