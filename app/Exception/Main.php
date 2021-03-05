@@ -5,7 +5,7 @@
  * @author irmmr <irmmr.ir@gmail.com>
  * @version 1.1
  */
-namespace Irmmr\Handle\Exception;
+namespace Irmmr\Handle\App\Exception;
 
 use Throwable;
 

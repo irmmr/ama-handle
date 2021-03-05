@@ -7,6 +7,8 @@
  */
 namespace Irmmr\Handle;
 
+use Exception;
+use Irmmr\Handle\App\Err;
 use Irmmr\Handle\Db\Query;
 use PDO;
 use PDOException;
@@ -100,7 +102,7 @@ class Db
             $db->execute($bin);
             self::closeAutoConn(); // auto connection
             return $db->fetchColumn();
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             Err::expLog($e, Err::DATABASE, 'DatabaseGetCount');
         } finally {
             return 0;
@@ -121,7 +123,7 @@ class Db
             $rows = $db->fetchAll();
             self::closeAutoConn(); // auto connection
             return $rows ?? [];
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             Err::expLog($e, Err::DATABASE, 'DatabaseGetData');
         } finally {
             return [];
@@ -141,7 +143,7 @@ class Db
             $db->execute($bin);
             self::closeAutoConn(); // auto connection
             return $db->rowCount();
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             Err::expLog($e, Err::DATABASE, 'DatabaseAddData');
         } finally {
             return false;
@@ -161,7 +163,7 @@ class Db
             $db->execute($bin);
             self::closeAutoConn(); // auto connection
             return $db->rowCount();
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             Err::expLog($e, Err::DATABASE, 'DatabaseDelData');
         } finally {
             return false;
@@ -181,7 +183,7 @@ class Db
             $act = $db->execute($bin);
             self::closeAutoConn(); // auto connection
             return $act;
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             Err::expLog($e, Err::DATABASE, 'DatabaseExecute');
         } finally {
             return false;

@@ -27,11 +27,11 @@ if (AMA_HANDLE_ERR['active']) {
             return;
         }
         if (AMA_HANDLE_ERR['logger']) {
-            Irmmr\Handle\Err::log($message, 'error', 0, 'Handler', $severity, $file, $line);
+            Irmmr\Handle\App\Err::log($message, 'error', 0, 'Handler', $severity, $file, $line);
         }
         if (AMA_HANDLE_ERR['stop']) {
             // Stop page
-            \Irmmr\Handle\App\Error::stop($message, 0, $file, $line, $severity);
+            \Irmmr\Handle\App\Err::stop($message, 0, $file, $line, $severity);
         }
     }, AMA_HANDLE_ERR['levels']);
 }
@@ -39,13 +39,13 @@ if (AMA_HANDLE_ERR['active']) {
 // Exception handler
 if (AMA_HANDLE_EXP['active']) {
     set_exception_handler(function ($exception) {
-        $err = Irmmr\Handle\Err::error($exception);
+        $err = Irmmr\Handle\App\Err::error($exception);
         if (AMA_HANDLE_EXP['logger']) {
             $err->addLog('ExpHandler');
         }
         if (AMA_HANDLE_EXP['stop']) {
             // Stop page
-            \Irmmr\Handle\App\Error::stop($err->getMessage(), $err->getCode(), $err->getFile(), $err->getLine(), 0);
+            \Irmmr\Handle\App\Err::stop($err->getMessage(), $err->getCode(), $err->getFile(), $err->getLine(), 0);
         }
     });
 }

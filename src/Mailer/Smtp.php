@@ -7,7 +7,7 @@
  */
 namespace Irmmr\Handle\Mailer;
 
-use Irmmr\Handle\Err;
+use Irmmr\Handle\App\Err;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP as Smt;
 use PHPMailer\PHPMailer\Exception;
