@@ -119,11 +119,15 @@ class Err
         // Add error if we are in dev mode
         if (AMA_HANDLE_CONF['dev']) {
             $text = @file($file);
-            $arr = array_slice($text, 0, $line);
-            if (array_key_exists($line, $text)) {
-                $arr[] = str_replace(PHP_EOL, '', $text[$line]);
+            if ($text !== false) {
+                $arr = array_slice($text, 0, $line);
+                if (array_key_exists($line, $text)) {
+                    $arr[] = str_replace(PHP_EOL, '', $text[$line]);
+                }
+                $coder = count($text) >= $line ? implode('', $arr) : '';
+            } else {
+                $coder = '';
             }
-            $coder = count($text) >= $line ? implode('', $arr) : '';
             $page = Theme::get('error-handler', [
                 'msg' => $message,
                 'code' => $code,
