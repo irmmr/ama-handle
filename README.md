@@ -1,11 +1,12 @@
 <p align="center">
     <a href="https://packagist.org/packages/irmmr/handle" target="_blank">
-        <img src="https://img.shields.io/packagist/v/irmmr/handle?style=for-the-badge" alt="packagist"/>
+        <img src="https://img.shields.io/packagist/v/irmmr/handle?style=flat" alt="packagist"/>
     </a>
     <a href="https://github.com/irmmr/ama-handle/blob/main/LICENSE" target="_blank">
-        <img src="https://img.shields.io/github/license/irmmr/ama-handle?style=for-the-badge" alt="license"/>
+        <img src="https://img.shields.io/github/license/irmmr/ama-handle?style=flat" alt="license"/>
     </a>
-    <img src="https://img.shields.io/packagist/php-v/irmmr/handle/V1.0.2?style=for-the-badge" alt="php version support"/>
+    <img src="https://img.shields.io/packagist/php-v/irmmr/handle/V1.0.2?style=flat" alt="php version support"/>
+    <img src="https://img.shields.io/badge/stable-V1.0.3-red?style=flat" alt="stable version"/>
 </p>
 
 # What is ama-handle?
