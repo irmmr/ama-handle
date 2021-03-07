@@ -8,6 +8,7 @@
 namespace Irmmr\Handle;
 
 use Irmmr\Handle\Storage\Cookie;
+use Irmmr\Handle\Storage\Session;
 
 /**
  * Class Storage
@@ -21,5 +22,14 @@ class Storage
      */
     public static function cookie(): Cookie {
         return new Cookie();
+    }
+
+    /**
+     * Session class handler.
+     * @param bool $autoStart
+     * @return Session
+     */
+    public static function session(bool $autoStart = true): Session {
+        return new Session($autoStart);
     }
 }
