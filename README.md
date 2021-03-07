@@ -6,7 +6,7 @@
         <img src="https://img.shields.io/github/license/irmmr/ama-handle?style=flat" alt="license"/>
     </a>
     <img src="https://img.shields.io/packagist/php-v/irmmr/handle/V1.0.2?style=flat" alt="php version support"/>
-    <img src="https://img.shields.io/badge/stable-V1.0.3-red?style=flat" alt="stable version"/>
+    <img src="https://img.shields.io/badge/stable-V1.0.4-red?style=flat" alt="stable version"/>
 </p>
 
 # What is ama-handle?
