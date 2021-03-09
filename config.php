@@ -4,7 +4,7 @@
  * This file using for set main variables and some configs
  * for user and is a important file for ama handle.
  * @author irmmr <irmmr.ir@gmail.com>
- * @version 1.1
+ * @version 1.2
  */
 
 /*
@@ -55,8 +55,6 @@ define('AMA_HANDLE_EMS', $emConfig['smtp']);
 $erConfig = require __DIR__ . '/config/error.php';
 define('AMA_HANDLE_ERR', $erConfig['error']);
 define('AMA_HANDLE_EXP', $erConfig['exception']);
-define('AMA_HANDLE_ERR_DISPLAY', $erConfig['display']);
-define('AMA_HANDLE_ERR_REPORT', $erConfig['report']);
 
 /**
  * ----------------------------------------
