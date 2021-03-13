@@ -105,40 +105,4 @@ class Err
         $logg = trim(str_replace(PHP_EOL, '', $logg));
         @file_put_contents(AMA_HANDLE_PATH . "/logs/{$name}.txt", $logg.PHP_EOL, FILE_APPEND);
     }
-
-    /**
-     * Ama error stopper.
-     * @param string $message
-     * @param int $code
-     * @param string $file
-     * @param int $line
-     * @param int $level
-     */
-    public static function stop(string $message, int $code, string $file, int $line, int $level): void {
-        $page = Theme::get('error-normal');
-        // Add error if we are in dev mode
-        if (AMA_HANDLE_CONF['dev']) {
-            $text = @file($file);
-            if ($text !== false) {
-                $arr = array_slice($text, 0, $line);
-                if (array_key_exists($line, $text)) {
-                    $arr[] = str_replace(PHP_EOL, '', $text[$line]);
-                }
-                $coder = count($text) >= $line ? implode('', $arr) : '';
-            } else {
-                $coder = '';
-            }
-            $page = Theme::get('error-handler', [
-                'msg' => $message,
-                'code' => $code,
-                'file' => $file,
-                'line' => $line,
-                'level' => $level,
-                'date' => date('Y-m-d H:i:s'),
-                'text' => $coder
-            ]);
-        }
-        // Stop all actions and die!
-        die($page);
-    }
 }

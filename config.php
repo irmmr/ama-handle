@@ -21,7 +21,7 @@
  * in other classes.
  */
 define('AMA_HANDLE_PATH', __DIR__);
-define('AMA_HANDLE_VERSION', '1.0.5');
+define('AMA_HANDLE_VERSION', '1.0.6');
 define('AMA_HANDLE_PHP', '7.4');
 
 /**

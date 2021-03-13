@@ -43,7 +43,7 @@ return [
 
 
 # Error reporting
-This library will show you all the errors of the website in full and save them all in the logs.
+This library will show you all the errors of the handle in full and save them all in the logs.
 You can use error-related configurations to specify the type of errors or change this section.
 
 > All errors are stored in this path: `/logs/*.txt`
