@@ -119,12 +119,10 @@ F::dir()->make('my-dir');
 
 - Working with database
 ```php
-use Irmmr\Handle\Db
+use Irmmr\Handle\Db;
 
 // Database select 1
-Db::query()->table('my-table')->select([
-    'id', 'name'
-])->where(['user' => 'ot'])->get();
+Db::query()->table('my-table')->select(['id', 'name'])->where(['user' => 'ot'])->get();
 
 // Database select 2
 Db::getData('SELECT `id`, `name` FROM `my-table` WHERE `user`=:user', [
