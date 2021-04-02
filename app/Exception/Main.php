@@ -63,22 +63,4 @@ class Main extends \Exception
         $this->message = $handler->getMessage();
         return $this;
     }
-
-    /**
-     * Add log error for the database error.
-     * @param string $name
-     * @param string $own
-     */
-    protected function logger(string $name, string $own): void {
-        $date = date('[Y-m-d H:i:s]');
-        @file_put_contents(AMA_HANDLE_PATH . "/logs/{$name}.txt", $date . " [C:{$this->getCode()}] [L:0] ({$own}) ({$this->getFile()}#{$this->getLine()}) " . $this->getMessage() . PHP_EOL, FILE_APPEND);
-    }
-
-    /**
-     * The main system errors.
-     * @param string $own
-     */
-    public function addLog(string $own = 'Unknown'): void {
-        $this->logger('error', $own);
-    }
 }

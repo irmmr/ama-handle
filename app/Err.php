@@ -7,8 +7,10 @@
  */
 namespace Irmmr\Handle\App;
 
-use Irmmr\Handle\App\Exception\Database;
+use Error;
+use Exception;
 use Irmmr\Handle\App\Exception\Main;
+use PDOException;
 
 /**
  * Class Err
@@ -17,27 +19,32 @@ use Irmmr\Handle\App\Exception\Main;
 class Err
 {
     /**
+     * Callbacks array for error using.
+     * @var array|null
+     */
+    private static ?array $callbacks = [];
+
+    /**
      * Error code and tags.
      */
-    public const DATABASE = 'database';
-    public const MAILER = 'mailer';
+    public const DATABASE   = 'database';
 
     /**
      * Create an ama error exception from main exception.
-     * @param \Exception $error
+     * @param Exception $error
      * @return Main
      */
-    public static function exp(\Exception $error): Main {
+    public static function exp(Exception $error): Main {
         $ama = new Main($error->getMessage(), $error->getCode(), $error->getPrevious());
         return $ama->loadException($error);
     }
 
     /**
      * Create a ama handler error.
-     * @param \Error $error
+     * @param Error $error
      * @return Main
      */
-    public static function error(\Error $error): Main {
+    public static function error(Error $error): Main {
         $ama = new Main($error->getMessage(), $error->getCode(), $error->getPrevious());
         return $ama->loadError($error);
     }
@@ -53,56 +60,42 @@ class Err
     }
 
     /**
-     * Create an ama database error exception from main exception.
-     * @param \Exception $error
-     * @return Database
-     */
-    public static function expDb(\Exception $error): Database {
-        $ama = new Database($error->getMessage(), $error->getCode(), $error->getPrevious());
-        return $ama->loadException($error);
-    }
-
-    /**
      * Create an ama database error exception from pdo exception.
-     * @param \PDOException $error
-     * @return Database
+     * @param PDOException $error
+     * @return Main
      */
-    public static function expDbPdo(\PDOException $error): Database {
-        return new Database($error->getMessage(), $error->getCode(), $error->getPrevious());
+    public static function expDbPdo(PDOException $error): Main {
+        return new Main($error->getMessage(), $error->getCode(), $error->getPrevious());
     }
 
     /**
-     * Add logger for an exception error.
+     * Listen to the errors by user.
+     * @param string $owner
+     * @param callable $callback
+     */
+    public static function listen(string $owner, callable $callback): void {
+        self::$callbacks[$owner] = $callback;
+    }
+
+    /**
+     * Call and error handling for own script.
      * @param $error
-     * @param string $name
-     * @param string $own
-     * @param int $level
+     * @param string $owner
      */
-    public static function expLog($error, string $name, string $own = 'Unknown', int $level = 0): void {
-        $date = date('[Y-m-d H:i:s]');
-        $logg = $date . " [C:{$error->getCode()}] [L:{$level}] ({$own}) ({$error->getFile()}#{$error->getLine()}) " . $error->getMessage();
-        $logg = trim(str_replace(PHP_EOL, '', $logg));
-        @file_put_contents(AMA_HANDLE_PATH . "/logs/{$name}.txt", $logg.PHP_EOL, FILE_APPEND);
-    }
-
-    /**
-     * Log error to custom logger.
-     * @param string $error
-     * @param string $name
-     * @param int $code
-     * @param string $own
-     * @param int $level
-     * @param string|null $file
-     * @param int|null $line
-     */
-    public static function log(string $error, string $name, int $code = 0, string $own = 'Unknown', int $level = 0, ?string $file = null, ?int $line = null): void {
-        $lineExp = 'No line';
-        if (!is_null($file) && !is_null($line)) {
-            $lineExp = "{$file}#{$line}";
+    public static function call($error, string $owner): void {
+        if (!array_key_exists($owner, self::$callbacks)) {
+            return;
         }
-        $date  = date('[Y-m-d H:i:s]');
-        $logg = $date . " [C:{$code}] [L:{$level}] ({$own}) ({$lineExp}) " . $error;
-        $logg = trim(str_replace(PHP_EOL, '', $logg));
-        @file_put_contents(AMA_HANDLE_PATH . "/logs/{$name}.txt", $logg.PHP_EOL, FILE_APPEND);
+        $act = self::$callbacks[$owner];
+        // listen to all ama-handle errors
+        if ($error instanceof \Error) {
+            call_user_func($act, self::error($error));
+        } elseif ($error instanceof \Exception) {
+            call_user_func($act, self::exp($error));
+        } elseif ($error instanceof \PDOException) {
+            call_user_func($act, self::expDbPdo($error));
+        } else {
+            call_user_func($act, null);
+        }
     }
 }

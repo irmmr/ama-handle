@@ -38,7 +38,7 @@ class Db
      */
     private static function openAutoConn(): void {
         if (!self::hasConnection() && AMA_HANDLE_DB['auto_make']) {
-            self::makeConnection();
+            self::connect();
         }
     }
 
@@ -54,7 +54,7 @@ class Db
     /**
      * Database create connection using PDO.
      */
-    public static function makeConnection(): void {
+    public static function connect(): void {
         if (!self::hasAssets()) {
             return;
         }
@@ -62,7 +62,7 @@ class Db
             self::$connector = new PDO("mysql:host=" . AMA_HANDLE_DB['host'] ?? '' . ";dbname=" . AMA_HANDLE_DB['name'] ?? '' . ";charset=" . AMA_HANDLE_DB['charset'] ?? '', AMA_HANDLE_DB['user'] ?? '', AMA_HANDLE_DB['pass'] ?? '');
             self::$connector->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
-            Err::expLog($e, Err::DATABASE, 'MakeConnection');
+            Err::call($e, Err::DATABASE);
         }
     }
 
@@ -77,7 +77,7 @@ class Db
     /**
      * Tries to stop database connection.
      */
-    public static function stopConnection(): void {
+    public static function disconnect(): void {
         self::$connector = null;
     }
 
@@ -103,7 +103,7 @@ class Db
             self::closeAutoConn(); // auto connection
             return $db->fetchColumn();
         } catch (Exception $e) {
-            Err::expLog($e, Err::DATABASE, 'DatabaseGetCount');
+            Err::call($e, Err::DATABASE);
         } finally {
             return 0;
         }
@@ -124,7 +124,7 @@ class Db
             self::closeAutoConn(); // auto connection
             return $rows ?? [];
         } catch (Exception $e) {
-            Err::expLog($e, Err::DATABASE, 'DatabaseGetData');
+            Err::call($e, Err::DATABASE);
         } finally {
             return [];
         }
@@ -144,7 +144,7 @@ class Db
             self::closeAutoConn(); // auto connection
             return $db->rowCount();
         } catch (Exception $e) {
-            Err::expLog($e, Err::DATABASE, 'DatabaseAddData');
+            Err::call($e, Err::DATABASE);
         } finally {
             return false;
         }
@@ -164,7 +164,7 @@ class Db
             self::closeAutoConn(); // auto connection
             return $db->rowCount();
         } catch (Exception $e) {
-            Err::expLog($e, Err::DATABASE, 'DatabaseDelData');
+            Err::call($e, Err::DATABASE);
         } finally {
             return false;
         }
@@ -184,7 +184,7 @@ class Db
             self::closeAutoConn(); // auto connection
             return $act;
         } catch (Exception $e) {
-            Err::expLog($e, Err::DATABASE, 'DatabaseExecute');
+            Err::call($e, Err::DATABASE);
         } finally {
             return false;
         }
