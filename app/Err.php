@@ -3,7 +3,7 @@
  * The error class.
  * The error handle for ama.
  * @author irmmr <irmmr.ir@gmail.com>
- * @version 1.2
+ * @version 1.3
  */
 namespace Irmmr\Handle\App;
 

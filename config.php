@@ -4,7 +4,7 @@
  * This file using for set main variables and some configs
  * for user and is a important file for ama handle.
  * @author irmmr <irmmr.ir@gmail.com>
- * @version 1.3
+ * @version 1.4
  */
 
 /*
@@ -20,8 +20,12 @@
  * This vars handles main values for usage
  * in other classes.
  */
+// main path
 define('AMA_HANDLE_PATH', __DIR__);
-define('AMA_HANDLE_VERSION', '1.0.7');
+// get version
+$version = @file_get_contents(AMA_HANDLE_PATH . '/version');
+define('AMA_HANDLE_VERSION', $version !== false && !empty($version) ? $version : 'unknown');
+// php support version
 define('AMA_HANDLE_PHP', '7.4');
 
 /**
