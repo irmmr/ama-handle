@@ -6,7 +6,7 @@
         <img src="https://img.shields.io/github/license/irmmr/ama-handle?style=flat" alt="license"/>
     </a>
     <img src="https://img.shields.io/packagist/php-v/irmmr/handle/V1.0.2?style=flat" alt="php version support"/>
-    <img src="https://img.shields.io/badge/stable-V1.0.4-red?style=flat" alt="stable version"/>
+    <img src="https://img.shields.io/badge/stable-V1.0.7-red?style=flat" alt="stable version"/>
 </p>
 
 # What is ama-handle?
@@ -43,16 +43,18 @@ return [
 
 
 # Error reporting
-This library will show you all the errors of the handle in full and save them all in the logs.
-You can use error-related configurations to specify the type of errors or change this section.
+You can manage errors that occur in the handle, but note that this only includes errors that have already been specified.
+This section contains two items, but you only need to specify a listener.
+```php
+use Irmmr\Handle\App\Err;
 
-> All errors are stored in this path: `/logs/*.txt`
-
-You can change the display of errors and their type of operation through skins `/assets/theme/error-handler.html` and `/assets/theme/error-normal.html`.
-
-**Notice:** If you are not interested in displaying errors, be sure to check the error settings in file `/config/error.php` and disable the items.
-
-**Alert:** Be sure to disable the developer option through settings `/config/main.php` after you want to use this handle on the website.
+// listen database errors
+Err::listen(Err::DATABASE, function ($error) {
+    if (is_null($error)) return;
+    echo $error->getMessage();
+});
+```
+> The error type is **Irmmr\Handle\App\Exception\Main**, which is a instance of **\Exception**.
 
 # Use
 If you are ready to use the library, you can use all the classes in folder `/src`. There are no restrictions on the use of these items and they are constantly updated.
@@ -66,18 +68,6 @@ echo D::remove()->str('Hello man!', 'e', 'l', ' ');
 
 // Remove from string. return: Homan!
 echo D::remove()->strFormat('Hello man!', '/[el ]/');
-```
-
-- Working with email
-```php
-use Irmmr\Handle\Mailer;
-
-// send email
-Mailer::smtp()->to('user@example.com', 'user')
-    ->reply('user@example.com', 'user')
-    ->subject('Hi')
-    ->content('Hello, how are you?')
-    ->send();
 ```
 
 - Working with method
