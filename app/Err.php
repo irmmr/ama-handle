@@ -27,7 +27,7 @@ class Err
     /**
      * Error code and tags.
      */
-    public const DATABASE   = 'database';
+    // not any error handle.
 
     /**
      * Create an ama error exception from main exception.

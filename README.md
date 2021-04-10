@@ -6,7 +6,7 @@
         <img src="https://img.shields.io/github/license/irmmr/ama-handle?style=flat" alt="license"/>
     </a>
     <img src="https://img.shields.io/packagist/php-v/irmmr/handle/V1.0.2?style=flat" alt="php version support"/>
-    <img src="https://img.shields.io/badge/stable-V1.0.7-red?style=flat" alt="stable version"/>
+    <img src="https://img.shields.io/badge/stable-V1.0.8-red?style=flat" alt="stable version"/>
 </p>
 
 # What is ama-handle?
@@ -25,23 +25,6 @@ composer require irmmr/handle
 }
 ```
 
-
-# Config
-This library includes a config folder where you can change various settings including email and database for your personal use.
-
-> Sample config file : **/config/database.php**
-```php
-return [
-    'user'      => 'my-database-user',
-    'pass'      => 'my-database-password',
-    'name'      => 'my-database-name',
-    'host'      => 'localhost',
-    'charset'   => 'utf8',
-    'auto_make' => true,
-];
-```
-
-
 # Error reporting
 You can manage errors that occur in the handle, but note that this only includes errors that have already been specified.
 This section contains two items, but you only need to specify a listener.
@@ -49,7 +32,7 @@ This section contains two items, but you only need to specify a listener.
 use Irmmr\Handle\App\Err;
 
 // listen database errors
-Err::listen(Err::DATABASE, function ($error) {
+Err::listen(ERROR_TYPE, function ($error) {
     if (is_null($error)) return;
     echo $error->getMessage();
 });
@@ -105,19 +88,6 @@ echo F::file()->size('path.txt');
 
 // make dir
 F::dir()->make('my-dir');
-```
-
-- Working with database
-```php
-use Irmmr\Handle\Db;
-
-// Database select 1
-Db::query()->table('my-table')->select(['id', 'name'])->where(['user' => 'ot'])->get();
-
-// Database select 2
-Db::getData('SELECT `id`, `name` FROM `my-table` WHERE `user`=:user', [
-    'user' => 'ot'
-]);
 ```
 
 And other items that will be added later.

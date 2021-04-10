@@ -80,7 +80,7 @@ class Filer
     }
 
     /**
-     * File file class.
+     * File file class."illuminate/database" : "^8.0",
      * @return File
      */
     public static function file(): File {
