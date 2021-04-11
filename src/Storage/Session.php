@@ -33,7 +33,7 @@ class Session
      * @return bool
      */
     public function start(array $options = []): bool {
-        return $this->isStarted() ? false : session_start($options);
+        return !$this->isStarted() && session_start($options);
     }
 
     /**
@@ -83,7 +83,7 @@ class Session
      * @return bool
      */
     public function destroy(): bool {
-        return $this->isStarted() ? session_destroy() : false;
+        return $this->isStarted() && session_destroy();
     }
 
     /**

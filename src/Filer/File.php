@@ -53,7 +53,7 @@ class File extends Filer
      * @return bool
      */
     public function delete(string $path): bool {
-        return parent::isFileExists($path) ? @unlink($path) : false;
+        return parent::isFileExists($path) && @unlink($path);
     }
 
     /**

@@ -27,7 +27,7 @@ class Dir extends Filer
                 return array_diff($contents, ['.', '..']);
             }
         }
-        return false;
+        return [];
     }
 
     /**
@@ -36,7 +36,7 @@ class Dir extends Filer
      * @return bool
      */
     public function delete(string $path): bool {
-        return self::isDirExists($path) ? @rmdir($path) : false;
+        return self::isDirExists($path) && @rmdir($path);
     }
 
     /**
@@ -47,7 +47,6 @@ class Dir extends Filer
      * @return bool
      */
     public function make(string $path, int $mode = 0777, bool $recursive = true): bool {
-        return !self::isDirExists($path) ?
-            @mkdir($path, $mode, $recursive) : false;
+        return !self::isDirExists($path) && @mkdir($path, $mode, $recursive);
     }
 }
