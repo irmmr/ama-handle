@@ -6,7 +6,7 @@
         <img src="https://img.shields.io/github/license/irmmr/ama-handle?style=flat" alt="license"/>
     </a>
     <img src="https://img.shields.io/packagist/php-v/irmmr/handle/V1.0.2?style=flat" alt="php version support"/>
-    <img src="https://img.shields.io/badge/stable-V1.0.8-red?style=flat" alt="stable version"/>
+    <img src="https://img.shields.io/badge/stable-V1.1.0-red?style=flat" alt="stable version"/>
 </p>
 
 # What is ama-handle?
@@ -51,6 +51,24 @@ echo D::remove()->str('Hello man!', 'e', 'l', ' ');
 
 // Remove from string. return: Homan!
 echo D::remove()->strFormat('Hello man!', '/[el ]/');
+```
+
+- Working with import
+```php
+use Irmmr\Handle\package as Pack;
+use Irmmr\Handle\Data;
+
+// example import with require
+// `import` scans all php files in `my-dir`
+Pack::import('test.php', 'file.php', 'my-dir')
+    ->base(__DIR__)->do();
+
+// block some files
+Pack::import('one-dir')
+    ->base(__DIR__, 'include')
+    ->filter(function ($file) {
+        return !Data::check()->includes($file, '/vendor/');
+    })->do();
 ```
 
 - Working with method
