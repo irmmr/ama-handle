@@ -39,11 +39,32 @@ class Import
     private array $path = [];
 
     /**
+     * All path imported.
+     *
+     * @var array
+     */
+    private array $imported = [];
+
+    /**
      * All files for import.
      *
      * @var array
      */
     private array $files = [];
+
+    /**
+     * Return require values.
+     *
+     * @var bool
+     */
+    private bool $return = false;
+
+    /**
+     * Duplicate files status.
+     *
+     * @var bool
+     */
+    private bool $duplicate = false;
 
     /**
      * Filter function for user.
@@ -99,6 +120,17 @@ class Import
     }
 
     /**
+     * Remove duplicate files.
+     *
+     * @return $this
+     */
+    public function duplicate(): Import {
+        $this->duplicate = true;
+
+        return $this;
+    }
+
+    /**
      * Import type.
      *
      * @param string $type
@@ -111,6 +143,17 @@ class Import
     }
 
     /**
+     * Import return value.
+     *
+     * @return $this
+     */
+    public function return(): Import {
+        $this->return = true;
+
+        return $this;
+    }
+
+    /**
      * Path builder with /.
      *
      * @param array $path
@@ -118,6 +161,27 @@ class Import
      */
     private function pathBuilder(array $path): string {
         return implode('/', $path);
+    }
+
+    /**
+     * Add a path to imported files.
+     *
+     * @param string $path
+     * @param $data
+     */
+    private function addImported(string $path, $data): void {
+        $path = substr($path, strlen($this->base));
+        $this->imported[$path] = $data;
+    }
+
+    /**
+     * Clean string path.
+     *
+     * @param string $path
+     * @return string
+     */
+    private function cleanPath(string $path): string {
+        return str_replace(['\\', '//'], '/', $path);
     }
 
     /**
@@ -151,7 +215,7 @@ class Import
         foreach ($scan as $file) {
             $file = $this->pathBuilder([$dir, $file]);
             if ($this->isImportable($file)) {
-                $this->files[] = $file;
+                $this->files[] = $this->cleanPath($file);
             } elseif (Filer::isDirExists($file)) {
                 $this->extractFiles($file);
             }
@@ -169,7 +233,7 @@ class Import
         }
         foreach ($path as $p) {
             if ($this->isImportable($p)) {
-                $this->files[] = $p;
+                $this->files[] = $this->cleanPath($p);
             } elseif (Filer::isDirExists($p)) {
                 $this->extractFiles($p);
             }
@@ -190,34 +254,53 @@ class Import
         }
         $this->getFiles($list);
         $this->files = array_filter($this->files, $this->filter);
+        // Duplicate files (!SORT_NUMERIC)
+        if (!$this->duplicate) {
+            $this->files = array_unique($this->files);
+        }
 
         return $this->files;
     }
 
     /**
      * Import files that user defined.
+     *
+     * @return array
      */
-    public function do(): void {
+    public function do(): array {
         $files = $this->get();
         if (empty($files)) {
-            return;
+            return [];
         }
         if ($this->type == self::REQUIRE) {
             foreach ($files as $file) {
-                require "{$file}";
+                $ret = require "{$file}";
+                if ($this->return) {
+                    $this->addImported($file, $ret);
+                }
             }
         } elseif ($this->type == self::REQUIRE_ONCE) {
             foreach ($files as $file) {
-                require_once "{$file}";
+                $ret = require_once "{$file}";
+                if ($this->return) {
+                    $this->addImported($file, $ret);
+                }
             }
         } elseif ($this->type == self::INCLUDE) {
             foreach ($files as $file) {
-                include "{$file}";
+                $ret = include "{$file}";
+                if ($this->return) {
+                    $this->addImported($file, $ret);
+                }
             }
         } elseif ($this->type == self::INCLUDE_ONCE) {
             foreach ($files as $file) {
-                include_once "{$file}";
+                $ret = include_once "{$file}";
+                if ($this->return) {
+                    $this->addImported($file, $ret);
+                }
             }
         }
+        return $this->imported;
     }
 }
