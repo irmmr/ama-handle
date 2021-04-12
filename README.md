@@ -55,7 +55,7 @@ echo D::remove()->strFormat('Hello man!', '/[el ]/');
 
 - Working with import
 ```php
-use Irmmr\Handle\package as Pack;
+use Irmmr\Handle\Package as Pack;
 use Irmmr\Handle\Data;
 
 // example import with require
