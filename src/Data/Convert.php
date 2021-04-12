@@ -15,6 +15,7 @@ class Convert
 {
     /**
      * Set uppercase data.
+     *
      * @param string $data
      * @return string
      */
@@ -24,6 +25,7 @@ class Convert
 
     /**
      * Set lowercase data.
+     *
      * @param string $data
      * @return string
      */
@@ -33,6 +35,7 @@ class Convert
 
     /**
      * Set uc first data.
+     *
      * @param string $data
      * @return string
      */

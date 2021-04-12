@@ -25,6 +25,7 @@ class Data
 {
     /**
      * Clean data.
+     *
      * @return Cleaner
      */
     public static function clean(): Cleaner {
@@ -33,6 +34,7 @@ class Data
 
     /**
      * Clean compare.
+     *
      * @return Compare
      */
     public static function compare(): Compare {
@@ -41,6 +43,7 @@ class Data
 
     /**
      * Clean check.
+     *
      * @return Check
      */
     public static function check(): Check {
@@ -49,6 +52,7 @@ class Data
 
     /**
      * Clean convert.
+     *
      * @return Convert
      */
     public static function convert(): Convert {
@@ -57,6 +61,7 @@ class Data
 
     /**
      * Random data.
+     *
      * @return Rand
      */
     public static function rand(): Rand {
@@ -65,6 +70,7 @@ class Data
 
     /**
      * Serialize data.
+     *
      * @return Serialize
      */
     public static function serialize(): Serialize {
@@ -73,6 +79,7 @@ class Data
 
     /**
      * Json data.
+     *
      * @return Json
      */
     public static function json(): Json {
@@ -81,6 +88,7 @@ class Data
 
     /**
      * Remove data.
+     *
      * @return Remove
      */
     public static function remove(): Remove {
@@ -89,6 +97,7 @@ class Data
 
     /**
      * Validate data.
+     *
      * @return Validate
      */
     public static function validate(): Validate {

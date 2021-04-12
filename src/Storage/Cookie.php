@@ -21,6 +21,7 @@ class Cookie
 
     /**
      * Set a cookie.
+     *
      * @param string $name
      * @param string $value
      * @param int $expire
@@ -37,6 +38,7 @@ class Cookie
 
     /**
      * Remove a cookie.
+     *
      * @param string $name
      * @param int $expire
      * @param string $path
@@ -48,6 +50,7 @@ class Cookie
 
     /**
      * Check cookie.
+     *
      * @param string $name
      * @return bool
      */
@@ -57,6 +60,7 @@ class Cookie
 
     /**
      * Get a cookie.
+     *
      * @param string $name
      * @param string|null $default
      * @return null|string
@@ -67,6 +71,7 @@ class Cookie
 
     /**
      * Evaluate cookie.
+     *
      * @param string $name
      * @param string|null $value
      * @return bool

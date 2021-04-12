@@ -15,6 +15,7 @@ class Check
 {
     /**
      * Check data includes action.
+     *
      * @param string $data
      * @param string $needle
      * @return bool
@@ -25,6 +26,7 @@ class Check
 
     /**
      * Check data startsWith action.
+     *
      * @param string $data
      * @param string $needle
      * @return bool
@@ -36,6 +38,7 @@ class Check
 
     /**
      * Check data startsWith action.
+     *
      * @param string $data
      * @param string $needle
      * @return bool
@@ -54,6 +57,7 @@ class Check
 
     /**
      * Check data key exists for arrays.
+     *
      * @param array $data
      * @param string ...$keys
      * @return bool
@@ -69,6 +73,7 @@ class Check
 
     /**
      * Check data item exists for arrays.
+     * 
      * @param array $data
      * @param string ...$items
      * @return bool

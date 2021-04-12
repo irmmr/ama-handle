@@ -15,6 +15,7 @@ class Remove
 {
     /**
      * Remove some data from string.
+     *
      * @param string $data
      * @param string ...$filter
      * @return string
@@ -31,6 +32,7 @@ class Remove
 
     /**
      * Remove data using format.
+     *
      * @param string $data
      * @param string ...$formats
      * @return string
@@ -47,6 +49,7 @@ class Remove
 
     /**
      * Array remove data.
+     *
      * @param array $data
      * @param string ...$keys
      * @return array
@@ -63,6 +66,7 @@ class Remove
 
     /**
      * Array remove data by format.
+     *
      * @param array $data
      * @param string ...$formats
      * @return array

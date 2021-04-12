@@ -17,6 +17,7 @@ class File extends Filer
 {
     /**
      * Get file content on type string.
+     *
      * @param string $path
      * @return string
      */
@@ -27,6 +28,7 @@ class File extends Filer
 
     /**
      * Write and create a file in filer.
+     *
      * @param string $path
      * @param string $content
      * @return bool
@@ -38,6 +40,7 @@ class File extends Filer
 
     /**
      * Append data to a file in filer.
+     *
      * @param string $path
      * @param string $content
      * @return bool
@@ -49,6 +52,7 @@ class File extends Filer
 
     /**
      * Delete a file if exists.
+     *
      * @param string $path
      * @return bool
      */
@@ -58,6 +62,7 @@ class File extends Filer
 
     /**
      * Get file size.
+     *
      * @param string $path
      * @return int
      */

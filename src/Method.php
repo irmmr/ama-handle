@@ -24,6 +24,7 @@ class Method
 
     /**
      * Create a get method class.
+     *
      * @return Get
      */
     public static function get(): Get {
@@ -32,6 +33,7 @@ class Method
 
     /**
      * Create a post method class.
+     *
      * @return Post
      */
     public static function post(): Post {
@@ -40,6 +42,7 @@ class Method
 
     /**
      * Get the method type.
+     *
      * @return string
      */
     public static function type(): string {
@@ -48,6 +51,7 @@ class Method
 
     /**
      * Check for method type.
+     *
      * @param int $code
      * @return bool
      */

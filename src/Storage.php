@@ -18,6 +18,7 @@ class Storage
 {
     /**
      * Cookie class handler.
+     *
      * @return Cookie
      */
     public static function cookie(): Cookie {
@@ -26,6 +27,7 @@ class Storage
 
     /**
      * Session class handler.
+     *
      * @param bool $autoStart
      * @return Session
      */

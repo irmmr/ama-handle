@@ -17,6 +17,7 @@ class Dir extends Filer
 {
     /**
      * Get dir list or contents for filer.
+     *
      * @param string $path
      * @return array|false
      */
@@ -32,6 +33,7 @@ class Dir extends Filer
 
     /**
      * Delete dir if exists.
+     *
      * @param string $path
      * @return bool
      */
@@ -41,6 +43,7 @@ class Dir extends Filer
 
     /**
      * Create a dir if not exists.
+     *
      * @param string $path
      * @param int $mode
      * @param bool $recursive

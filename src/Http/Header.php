@@ -21,6 +21,7 @@ class Header
 
     /**
      * Check for header sent.
+     *
      * @param string|null $file
      * @param int|null $line
      * @return bool
@@ -31,6 +32,7 @@ class Header
 
     /**
      * Set header with value.
+     *
      * @param string $header
      * @param string|null $value
      * @param bool $replace
@@ -45,6 +47,7 @@ class Header
 
     /**
      * Remove a header or all headers.
+     *
      * @param string|null $name
      */
     public function remove(?string $name = null): void {
@@ -53,6 +56,7 @@ class Header
 
     /**
      * The full list of headers.
+     *
      * @return array
      */
     public function list(): array {
@@ -76,6 +80,7 @@ class Header
 
     /**
      * Check for header exists.
+     *
      * @param string $name
      * @param string $type
      * @return bool
@@ -91,6 +96,7 @@ class Header
 
     /**
      * Get a header value.
+     *
      * @param string $name
      * @param string|null $default
      * @return string|null

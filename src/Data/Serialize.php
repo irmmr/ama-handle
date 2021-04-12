@@ -15,6 +15,7 @@ class Serialize
 {
     /**
      * Encode data.
+     *
      * @param array $data
      * @return string
      */
@@ -24,6 +25,7 @@ class Serialize
 
     /**
      * Decode data.
+     *
      * @param string $data
      * @return array
      */
@@ -33,6 +35,7 @@ class Serialize
 
     /**
      * Verify data.
+     *
      * @author WordPress
      * @param string $data
      * @param bool $strict

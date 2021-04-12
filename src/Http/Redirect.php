@@ -18,6 +18,7 @@ class Redirect
 {
     /**
      * Redirect to new url.
+     *
      * @param string $url
      * @param bool $exit
      */
@@ -32,6 +33,7 @@ class Redirect
 
     /**
      * No script redirect using html.
+     *
      * Not recommended!
      * @param string $url
      * @param int $timer Based on seconds
@@ -43,6 +45,7 @@ class Redirect
     /**
      * Script redirect using javascript.
      * Not recommended!
+     *
      * @param string $url
      * @param int $timer Based on seconds
      */

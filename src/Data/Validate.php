@@ -15,6 +15,7 @@ class Validate
 {
     /**
      * Check link.
+     *
      * @param string $str
      * @return bool
      */
@@ -24,6 +25,7 @@ class Validate
 
     /**
      * Check email.
+     *
      * @param string $str
      * @return bool
      */

@@ -18,6 +18,7 @@ class Http
 {
     /**
      * Create header class.
+     *
      * @return Header
      */
     public static function header(): Header {
@@ -26,6 +27,7 @@ class Http
 
     /**
      * Create redirect class.
+     *
      * @return Redirect
      */
     public static function redirect(): Redirect {

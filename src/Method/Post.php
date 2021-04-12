@@ -15,6 +15,7 @@ class Post
 {
     /**
      * Check for post method existing.
+     *
      * @param string ...$name
      * @return bool
      */
@@ -32,6 +33,7 @@ class Post
 
     /**
      * Get a post method content.
+     *
      * @param string $name
      * @param string|null $default
      * @return null|string
@@ -42,6 +44,7 @@ class Post
 
     /**
      * Unset a get method.
+     *
      * @param string $name
      */
     public function unset(string $name): void {
@@ -52,6 +55,7 @@ class Post
 
     /**
      * Check param value.
+     *
      * @param string $name
      * @param string|null $value
      * @return bool

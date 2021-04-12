@@ -15,6 +15,7 @@ class Compare
 {
     /**
      * Compare data length using domain.
+     *
      * @param string $data
      * @param int|null $min
      * @param int|null $max
@@ -34,6 +35,7 @@ class Compare
 
     /**
      * Compare data length.
+     *
      * @param string $data
      * @param int $size
      * @return bool
@@ -44,6 +46,7 @@ class Compare
 
     /**
      * Compare data is action.
+     *
      * @param string $data
      * @param string $str
      * @return bool

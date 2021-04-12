@@ -15,6 +15,7 @@ class Rand
 {
     /**
      * Make random data based on string.
+     *
      * @param int $len
      * @param array ...$ranges
      * @return string
@@ -31,6 +32,7 @@ class Rand
     /**
      * Get random string.
      * includes a-z + A-Z
+     *
      * @param int $len
      * @return string
      */
@@ -45,6 +47,7 @@ class Rand
     /**
      * Get random value.
      * includes a-z + A-Z + 0-9
+     *
      * @param int $len
      * @return string
      */
@@ -60,6 +63,7 @@ class Rand
     /**
      * Get random string.
      * includes A-Z
+     *
      * @param int $len
      * @return string
      */
@@ -73,6 +77,7 @@ class Rand
     /**
      * Get random string.
      * includes a-z
+     *
      * @param int $len
      * @return string
      */
@@ -86,6 +91,7 @@ class Rand
     /**
      * Get random string.
      * includes a-z
+     *
      * @param int $len
      * @return string
      */
@@ -98,6 +104,7 @@ class Rand
 
     /**
      * Create a random number.
+     *
      * @param int $digits
      * @return int
      */
@@ -109,6 +116,7 @@ class Rand
 
     /**
      * Create random unsigned number.
+     *
      * @param int $digits
      * @return int
      */

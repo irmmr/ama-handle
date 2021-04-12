@@ -15,6 +15,7 @@ class Json
 {
     /**
      * Encode data.
+     *
      * @param array $data
      * @return string
      */
@@ -24,6 +25,7 @@ class Json
 
     /**
      * Decode data.
+     *
      * @param string $data
      * @param bool $associative
      * @return array
@@ -34,6 +36,7 @@ class Json
 
     /**
      * Verify data.
+     *
      * @param string $data
      * @param bool $associative
      * @return bool

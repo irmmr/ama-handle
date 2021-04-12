@@ -15,12 +15,14 @@ class Session
 {
     /**
      * Auto start session.
+     *
      * @var bool
      */
     private bool $autoStart;
 
     /**
      * Session constructor.
+     *
      * @param bool $autoStart
      */
     public function __construct(bool $autoStart = true) {
@@ -29,6 +31,7 @@ class Session
 
     /**
      * Start a session.
+     *
      * @param array $options
      * @return bool
      */
@@ -38,6 +41,7 @@ class Session
 
     /**
      * Get session status.
+     *
      * @return int
      */
     public function status(): int {
@@ -46,6 +50,7 @@ class Session
 
     /**
      * Get or change session id.
+     *
      * @param string|null $id
      * @return string
      */
@@ -55,6 +60,7 @@ class Session
 
     /**
      * Check session status.
+     *
      * @param int $status
      * @return bool
      */
@@ -64,6 +70,7 @@ class Session
 
     /**
      * Check if session started.
+     *
      * @return bool
      */
     public function isStarted(): bool {
@@ -72,6 +79,7 @@ class Session
 
     /**
      * Abort session.
+     *
      * @return bool
      */
     public function abort(): bool {
@@ -80,6 +88,7 @@ class Session
 
     /**
      * Destroy session.
+     *
      * @return bool
      */
     public function destroy(): bool {
@@ -88,6 +97,7 @@ class Session
 
     /**
      * Get a session data.
+     *
      * @param string $name
      * @param null $default
      * @return mixed|null
@@ -101,6 +111,7 @@ class Session
 
     /**
      * Check if a session is exists.
+     *
      * @param string $name
      * @return bool
      */
@@ -122,6 +133,7 @@ class Session
 
     /**
      * Reset session data.
+     *
      * @return bool
      */
     public function reset(): bool {
@@ -130,6 +142,7 @@ class Session
 
     /**
      * Set multi sessions as array.
+     *
      * @param array ...$sessions
      */
     public function setMulti(array ...$sessions): void {
@@ -147,6 +160,7 @@ class Session
 
     /**
      * Get session list.
+     *
      * @return array
      */
     public function list(): array {

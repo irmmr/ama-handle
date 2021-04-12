@@ -24,6 +24,7 @@ class Cleaner
 
     /**
      * Clean slashes data string.
+     *
      * @param string $data
      * @return string
      */
@@ -33,6 +34,7 @@ class Cleaner
 
     /**
      * Clean html entries data string.
+     *
      * @param string $data
      * @return string
      */
@@ -42,6 +44,7 @@ class Cleaner
 
     /**
      * Clean html special data string.
+     *
      * @param string $data
      * @return string
      */
@@ -51,6 +54,7 @@ class Cleaner
 
     /**
      * Clean html strip tags data string.
+     *
      * @param string $data
      * @return string
      */
@@ -60,6 +64,7 @@ class Cleaner
 
     /**
      * Clean base data string.
+     *
      * @param string $data
      * @return string
      */
@@ -73,6 +78,7 @@ class Cleaner
 
     /**
      * Clean data using custom function.
+     *
      * @param string $data
      * @param string ...$func
      * @return string
@@ -88,6 +94,7 @@ class Cleaner
 
     /**
      * Main cleaner method for all settings.
+     *
      * @param string $data
      * @param array $type
      * @param array|null $aps

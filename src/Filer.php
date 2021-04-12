@@ -18,6 +18,7 @@ class Filer
 {
     /**
      * Check if file exists.
+     *
      * @param string $path
      * @return bool
      */
@@ -27,6 +28,7 @@ class Filer
 
     /**
      * Check if a file exists.
+     *
      * @param string $path
      * @return bool
      */
@@ -36,6 +38,7 @@ class Filer
 
     /**
      * Check if a dir exists.
+     *
      * @param string $path
      * @return bool
      */
@@ -45,6 +48,7 @@ class Filer
 
     /**
      * Check if file writeable.
+     *
      * @param string $path
      * @return bool
      */
@@ -54,6 +58,7 @@ class Filer
 
     /**
      * Check if file is readable.
+     *
      * @param string $path
      * @return bool
      */
@@ -63,6 +68,7 @@ class Filer
 
     /**
      * Check if path is dir and exists.
+     *
      * @param string $path
      * @return bool
      */
@@ -72,6 +78,7 @@ class Filer
 
     /**
      * Check if path is a file.
+     *
      * @param string $path
      * @return bool
      */
@@ -80,7 +87,8 @@ class Filer
     }
 
     /**
-     * File file class."illuminate/database" : "^8.0",
+     * File file class.
+     *
      * @return File
      */
     public static function file(): File {
@@ -89,6 +97,7 @@ class Filer
 
     /**
      * File dir class.
+     *
      * @return Dir
      */
     public static function dir(): Dir {
