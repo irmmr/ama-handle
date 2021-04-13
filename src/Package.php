@@ -13,7 +13,7 @@ use Irmmr\Handle\Package\Import;
  * Class package
  * @package Irmmr\Handle
  */
-class package
+class Package
 {
     /**
      * Import class loader.
