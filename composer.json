@@ -25,9 +25,6 @@
     "ext-json": "*"
   },
   "autoload": {
-    "files" : [
-      "/config.php"
-    ],
     "psr-4": {
       "Irmmr\\Handle\\App\\": "app/",
       "Irmmr\\Handle\\": "src/"

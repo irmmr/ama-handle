@@ -1,1 +1,4 @@
-/.idea
+.idea
+example
+vendor
+composer.lock
