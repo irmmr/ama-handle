@@ -253,7 +253,9 @@ class Import
             $list[] = $des;
         }
         $this->getFiles($list);
-        $this->files = array_filter($this->files, $this->filter);
+        if (!is_null($this->filter)) {
+            $this->files = array_filter($this->files, $this->filter);
+        }
         // Duplicate files (!SORT_NUMERIC)
         if (!$this->duplicate) {
             $this->files = array_unique($this->files);
