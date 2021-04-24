@@ -29,42 +29,42 @@ class Import
      *
      * @var string
      */
-    private string $base = '/';
+    private $base = '/';
 
     /**
      * All path addresses.
      *
      * @var array
      */
-    private array $path = [];
+    private $path = [];
 
     /**
      * All path imported.
      *
      * @var array
      */
-    private array $imported = [];
+    private $imported = [];
 
     /**
      * All files for import.
      *
      * @var array
      */
-    private array $files = [];
+    private $files = [];
 
     /**
      * Return require values.
      *
      * @var bool
      */
-    private bool $return = false;
+    private $return = false;
 
     /**
      * Duplicate files status.
      *
      * @var bool
      */
-    private bool $duplicate = false;
+    private $duplicate = false;
 
     /**
      * Filter function for user.
@@ -79,7 +79,7 @@ class Import
      *
      * @var string
      */
-    private string $type = self::REQUIRE;
+    private $type = self::REQUIRE;
 
     /**
      * Import constructor.
