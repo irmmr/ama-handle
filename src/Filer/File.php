@@ -34,8 +34,7 @@ class File extends Filer
      * @return bool
      */
     public function write(string $path, string $content = ''): bool {
-        return parent::isFileExists($path) && parent::isWriteable($path) ?
-            @file_put_contents($path, $content) : false;
+        return @file_put_contents($path, $content);
     }
 
     /**
