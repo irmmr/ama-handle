@@ -6,7 +6,7 @@
         <img src="https://img.shields.io/github/license/irmmr/ama-handle?style=flat" alt="license"/>
     </a>
     <img src="https://img.shields.io/packagist/php-v/irmmr/handle/V1.0.2?style=flat" alt="php version support"/>
-    <img src="https://img.shields.io/badge/stable-V1.1.2-red?style=flat" alt="stable version"/>
+    <img src="https://img.shields.io/badge/stable-V1.1.5-red?style=flat" alt="stable version"/>
 </p>
 
 # What is ama-handle?
@@ -20,7 +20,7 @@ composer require irmmr/handle
 ```json
 {
     "require": {
-        "irmmr/handle": "^1.0"
+        "irmmr/handle": "^1.1.5"
     }
 }
 ```
@@ -106,6 +106,25 @@ echo F::file()->size('path.txt');
 
 // make dir
 F::dir()->make('my-dir');
+```
+
+- Extract files from dirs
+```php
+use Irmmr\Handle\Filer;
+
+// extract all php and html files example (return array)
+$files = Filer::extract('.')    // path
+    ->base(__DIR__)             // main directory
+    ->loop()                    // enable loop dirs
+    ->extensions('php', 'html') // set valid extensions
+    ->get();
+
+// extract some folders of project
+$files = Filer::extract('*.json', 'src', 'other-dir')
+    ->base(__DIR__, 'vendor')
+    ->loop()
+    ->extensions('json')
+    ->get();
 ```
 
 And other items that will be added later.
