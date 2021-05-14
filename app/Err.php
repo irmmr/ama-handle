@@ -22,7 +22,7 @@ class Err
      * Callbacks array for error using.
      * @var array|null
      */
-    private static ?array $callbacks = [];
+    private static $callbacks = [];
 
     /**
      * Error code and tags.

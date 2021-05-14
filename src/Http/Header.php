@@ -66,7 +66,7 @@ class Header
         }
         $collect = [];
         foreach ($headers as $head) {
-            if (preg_match('/(\w+): (\w+)/', $head)) {
+            if (preg_match_all('/^(\w+)(:)(\w+| \w+)$/', $head)) {
                 $spl = explode(':', $head, 2);
                 $name = str_replace(' ', '', $spl[0]);
                 $value = trim($spl[1]);

@@ -19,7 +19,7 @@ class Dir extends Filer
      * Get dir list or contents for filer.
      *
      * @param string $path
-     * @return array|false
+     * @return array
      */
     public function list(string $path): array {
         if (parent::isDirExists($path)) {

@@ -17,38 +17,50 @@ class Check
      * Check data includes action.
      *
      * @param string $data
-     * @param string $needle
+     * @param string ...$needle
      * @return bool
      */
-    public function includes(string $data, string $needle): bool {
-        return strpos($data, $needle) !== false;
-    }
-
-    /**
-     * Check data startsWith action.
-     *
-     * @param string $data
-     * @param string $needle
-     * @return bool
-     */
-    public function startsWith(string $data, string $needle): bool {
-        $length = strlen($needle);
-        return substr($data, 0, $length) === $needle;
-    }
-
-    /**
-     * Check data startsWith action.
-     *
-     * @param string $data
-     * @param string $needle
-     * @return bool
-     */
-    public function endsWith(string $data, string $needle): bool {
-        $length = strlen($needle);
-        if (!$length) {
-            return true;
+    public function includes(string $data, string ...$needle): bool {
+        foreach ($needle as $n) {
+            if (strpos($data, $n) == false) {
+                return false;
+            }
         }
-        return substr($data, -$length) === $needle;
+        return true;
+    }
+
+    /**
+     * Check data startsWith action.
+     *
+     * @param string $data
+     * @param string ...$needle
+     * @return bool
+     */
+    public function startsWith(string $data, string ...$needle): bool {
+        foreach ($needle as $n) {
+            $length = strlen($needle);
+            if (substr($data, 0, $length) !== $needle) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * Check data startsWith action.
+     *
+     * @param string $data
+     * @param string ...$needle
+     * @return bool
+     */
+    public function endsWith(string $data, string ...$needle): bool {
+        foreach ($needle as $n) {
+            $length = strlen($n);
+            if ($length || substr($data, -$length) !== $needle) {
+                return false;
+            }
+        }
+        return true;
     }
 
     /*

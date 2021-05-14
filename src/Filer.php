@@ -9,6 +9,7 @@ namespace Irmmr\Handle;
 
 use Irmmr\Handle\Filer\Dir;
 use Irmmr\Handle\Filer\File;
+use Irmmr\Handle\Filer\Extract;
 
 /**
  * Class Filer
@@ -102,5 +103,15 @@ class Filer
      */
     public static function dir(): Dir {
         return new Dir();
+    }
+
+    /**
+     * File dir extract.
+     *
+     * @param string ...$path
+     * @return Extract
+     */
+    public static function extract(string ...$path): Extract {
+        return new Extract($path);
     }
 }

@@ -46,13 +46,6 @@ class Import
     private $imported = [];
 
     /**
-     * All files for import.
-     *
-     * @var array
-     */
-    private $files = [];
-
-    /**
      * Return require values.
      *
      * @var bool
@@ -65,6 +58,13 @@ class Import
      * @var bool
      */
     private $duplicate = false;
+
+    /**
+     * Loop all folders in a folder.
+     *
+     * @var bool
+     */
+    private $loop = false;
 
     /**
      * Filter function for user.
@@ -131,6 +131,17 @@ class Import
     }
 
     /**
+     * Enable loop all folders.
+     *
+     * @return $this
+     */
+    public function loop(): Import {
+        $this->loop = true;
+
+        return $this;
+    }
+
+    /**
      * Import type.
      *
      * @param string $type
@@ -175,93 +186,24 @@ class Import
     }
 
     /**
-     * Clean string path.
-     *
-     * @param string $path
-     * @return string
-     */
-    private function cleanPath(string $path): string {
-        return str_replace(['\\', '//'], '/', $path);
-    }
-
-    /**
-     * Check if file ext is php.
-     *
-     * @param string $path
-     * @return bool
-     */
-    private function isPhpFile(string $path): bool {
-        return pathinfo($path, PATHINFO_EXTENSION) == 'php';
-    }
-
-    /**
-     * Check if a file is importable.
-     *
-     * @param string $path
-     * @return bool
-     */
-    private function isImportable(string $path): bool {
-        return Filer::isFileExists($path) && $this->isPhpFile($path);
-    }
-
-    /**
-     * Extract all files from dir.
-     *
-     * @param string $dir
-     * @return void
-     */
-    private function extractFiles(string $dir): void {
-        $scan   = Filer::dir()->list($dir);
-        foreach ($scan as $file) {
-            $file = $this->pathBuilder([$dir, $file]);
-            if ($this->isImportable($file)) {
-                $this->files[] = $this->cleanPath($file);
-            } elseif (Filer::isDirExists($file)) {
-                $this->extractFiles($file);
-            }
-        }
-    }
-
-    /**
-     * Get all files.
-     *
-     * @param array $path
-     */
-    private function getFiles(array $path): void {
-        if (empty($path)) {
-            return;
-        }
-        foreach ($path as $p) {
-            if ($this->isImportable($p)) {
-                $this->files[] = $this->cleanPath($p);
-            } elseif (Filer::isDirExists($p)) {
-                $this->extractFiles($p);
-            }
-        }
-    }
-
-    /**
      * Do and run import action.
      *
      * @return array
      */
     public function get(): array {
-        $list       = [];
-        // manage all files with original path.
-        foreach ($this->path as $p) {
-            $des = $this->pathBuilder([$this->base, $p]);
-            $list[] = $des;
+        $amp = Filer::extract(...$this->path)
+            ->base($this->base)
+            ->extensions('php');
+        if ($this->loop) {
+            $amp->loop();
         }
-        $this->getFiles($list);
         if (!is_null($this->filter)) {
-            $this->files = array_filter($this->files, $this->filter);
+            $amp->filter($this->filter);
         }
-        // Duplicate files (!SORT_NUMERIC)
-        if (!$this->duplicate) {
-            $this->files = array_unique($this->files);
+        if ($this->duplicate) {
+            $amp->duplicate();
         }
-
-        return $this->files;
+        return $amp->get();
     }
 
     /**

@@ -33,30 +33,12 @@ class Data
     }
 
     /**
-     * Clean compare.
-     *
-     * @return Compare
-     */
-    public static function compare(): Compare {
-        return new Compare();
-    }
-
-    /**
      * Clean check.
      *
      * @return Check
      */
     public static function check(): Check {
         return new Check();
-    }
-
-    /**
-     * Clean convert.
-     *
-     * @return Convert
-     */
-    public static function convert(): Convert {
-        return new Convert();
     }
 
     /**
