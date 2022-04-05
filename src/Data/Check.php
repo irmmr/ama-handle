@@ -38,8 +38,8 @@ class Check
      */
     public function startsWith(string $data, string ...$needle): bool {
         foreach ($needle as $n) {
-            $length = strlen($needle);
-            if (substr($data, 0, $length) !== $needle) {
+            $length = strlen($n);
+            if (substr($data, 0, $length) !== $n) {
                 return false;
             }
         }
@@ -56,7 +56,7 @@ class Check
     public function endsWith(string $data, string ...$needle): bool {
         foreach ($needle as $n) {
             $length = strlen($n);
-            if ($length || substr($data, -$length) !== $needle) {
+            if ($length || substr($data, -$length) !== $n) {
                 return false;
             }
         }
